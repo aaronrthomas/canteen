@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/canteen_db}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  sql:
+    init:
+      mode: always
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:canteen-super-secret-jwt-key-minimum-256-bits-long-for-security}
+    expiration: ${JWT_EXPIRATION:86400000}
+
+logging:
+  level:
+    com.canteen: DEBUG
+    org.springframework.security: INFO
